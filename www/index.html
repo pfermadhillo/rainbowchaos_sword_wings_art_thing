@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>RainbowChaos Sword Wings Art Thing</title>
+  <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <!-- <script src="tint.js"></script> -->
+</head>
+
+<body>
+
+<audio controls loop>
+  <source src="audio/noise.wav" type="audio/wav">
+  <!-- <source src="horse.mp3" type="audio/mpeg"> -->
+  Your browser does not support the audio element.
+</audio>
+
+
+<canvas id="w3rCanvas" width="800" height="640"></canvas>
+<script>
+	var canvas = document.getElementById('w3rCanvas');
+	var context = canvas.getContext('2d');
+
+	setInterval(()=>{
+		loadEmUp();
+	},300);
+
+	// loadEmUp();
+	// setTimeout(function(){
+	//     //do what you need here
+	//     if(canvas.Children){canvas.Children.Clear();}
+	//     loadEmUp();
+	// }, 3000);
+
+	// for (let i = 1; i <= 5; i++) {
+	// 	loadEmUp();
+	// 	sleep(1000)
+	// }
+	
+	// while(true){
+	// 	setTimeout(function () {
+	// 		if(canvas.Children){
+	// 			canvas.Children.Clear();
+	// 		}
+	// 		loadEmUp();
+	        
+	//     }, 2000); 
+	// }	
+	  
+
+	function loadEmUp(){
+		var imgObj = new Image();
+		imgObj.onload = function() {
+			context.drawImage(imgObj, 0, 0);
+		};
+		imgObj.src = 'img/bg.png';
+
+		var a2Obj = new Image();
+		a2Obj.onload = function() {
+			context.filter = 'hue-rotate(75deg)';
+			context.drawImage(a2Obj, 0, 0);
+		};
+		a2Obj.src = 'img/body.png';
+
+
+
+		for (let i = 1; i <= 5; i++) {
+			var rand = getRandomInt(0,359);
+			aCreateImg(i, rand);
+		}
+		for (let i = 1; i <= 12; i++) {
+			var rand = getRandomInt(0,359);
+			sCreateImg(i, rand);
+		}
+		for (let i = 1; i <= 9; i++) {
+			var rand = getRandomInt(0,359);
+			wlCreateImg(i, rand);
+		}
+		for (let i = 1; i <= 12; i++) {
+			var rand = getRandomInt(0,359);
+			wrCreateImg(i, rand);
+		}
+	}	
+
+	function aCreateImg(i, rand){
+		var obj = new Image();
+		obj.onload = function() {
+			context.filter = 'brightness(2000%) hue-rotate('+rand+'deg)';
+			context.drawImage(obj, 0, 0);
+		};
+		obj.src = 'img/a'+i+'.png';
+		// console.log("its a", rand, i, obj);
+	}
+	function sCreateImg(i, rand){
+		var obj = new Image();
+		obj.onload = function() {
+			context.filter = 'brightness(500%) hue-rotate('+rand+'deg)';
+			context.drawImage(obj, 0, 0);
+		};
+		obj.src = 'img/s'+i+'.png';
+		// console.log("its s", rand, i, obj);
+	}
+	function wlCreateImg(i, rand){
+		var obj = new Image();
+		obj.onload = function() {
+			context.filter = 'brightness(500%) hue-rotate('+rand+'deg) drop-shadow(-9px 9px 10px #c61)';
+			context.drawImage(obj, 0, 0);
+		};
+		obj.src = 'img/wl'+i+'.png';
+		// console.log("its wl", rand, i, obj);
+	}
+	function wrCreateImg(i, rand){
+		var obj = new Image();
+		obj.onload = function() {
+			context.filter = 'brightness(500%) hue-rotate('+rand+'deg) drop-shadow(-9px 9px 10px #e81)';
+			context.drawImage(obj, 0, 0);
+		};
+		obj.src = 'img/wr'+i+'.png';
+		// console.log("its wr", rand, i, obj);
+	}
+
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function sleep(milliseconds) {
+	  var start = new Date().getTime();
+	  for (var i = 0; i < 1e7; i++) {
+	    if ((new Date().getTime() - start) > milliseconds){
+	      break;
+	    }
+	  }
+	}
+    </script>
+
+<!-- 
+
+<div class="tint">
+	<img id="layer1" src="img/bg.png"/>
+</div>
+<div class="tint">
+	<img id="layer2" src="img/a1.png"/>
+</div>
+<div class="tint">
+	<img id="layer3" src="img/a2.png"/>
+</div>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("mine").forEach(function (img) {
+        // img.addEventListener("load", function () {
+        //     tint(img);
+        // });
+        img.id = 'testt';
+    })
+});
+</script> -->
+
+</body>
+</html>
